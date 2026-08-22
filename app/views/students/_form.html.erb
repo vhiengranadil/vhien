@@ -1,0 +1,31 @@
+<%= form_with(model: student) do |form| %>
+
+  <div>
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :year_level, "Year Level" %>
+    <%= form.number_field :year_level %>
+  </div>
+
+  <div>
+    <%= form.label :program, "Program" %>
+    <%= form.text_field :program %>
+  </div>
+
+  <div>
+    <%= form.label :department_id, "Department" %>
+    <%= form.collection_select :department_id,
+          Department.all,
+          :id,
+          :name,
+          { prompt: "Select a department" } %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

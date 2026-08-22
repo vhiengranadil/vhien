@@ -1,0 +1,88 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @department %>
+
+<h3>Students</h3>
+
+<% if @department.students.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Program</th>
+        <th>Year Level</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @department.students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.program %></td>
+          <td><%= student.year_level %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No students found.</p>
+<% end %>
+
+<h3>Teachers</h3>
+
+<% if @department.teachers.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Specialization</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @department.teachers.each do |teacher| %>
+        <tr>
+          <td><%= teacher.name %></td>
+          <td><%= teacher.email %></td>
+          <td><%= teacher.specialization %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No teachers found.</p>
+<% end %>
+
+<h3>Laboratories</h3>
+
+<% if @department.laboratories.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @department.laboratories.each do |laboratory| %>
+        <tr>
+          <td><%= laboratory.name %></td>
+          <td><%= laboratory.location %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No laboratories found.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this department", edit_department_path(@department) %> |
+  <%= link_to "Back to departments", departments_path %>
+
+  <%= button_to "Destroy this department",
+        @department,
+        method: :delete %>
+</div>
