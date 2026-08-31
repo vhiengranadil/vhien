@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Class lists" %>
+
+<h1>Class lists</h1>
+
+<div id="class_lists">
+  <% @class_lists.each do |class_list| %>
+    <%= render class_list %>
+    <p>
+      <%= link_to "Show this class list", class_list %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New class list", new_class_list_path %>

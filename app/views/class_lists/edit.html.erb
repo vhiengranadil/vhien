@@ -1,0 +1,12 @@
+<% content_for :title, "Editing class list" %>
+
+<h1>Editing class list</h1>
+
+<%= render "form", class_list: @class_list %>
+
+<br>
+
+<div>
+  <%= link_to "Show this class list", @class_list %> |
+  <%= link_to "Back to class lists", class_lists_path %>
+</div>
