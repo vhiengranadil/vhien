@@ -1,10 +1,42 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @section %>
+<p>
+  <strong>Subject:</strong> <%= @section.subject.name %><br>
+  <strong>Teacher:</strong> <%= @section.subject.teacher.name %><br>
+  <strong>Section:</strong> <%= @section.name %><br>
+  <strong>Room:</strong> <%= @section.room %><br>
+  <strong>Timeslot:</strong> <%= @section.timeslot %>
+</p>
+
+<h2>List of Students:</h2>
+
+<% if @section.students.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year Level</th>
+        <th>Program</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @section.students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.year_level %></td>
+          <td><%= student.program %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No students enrolled in this section.</p>
+<% end %>
+
+<br>
 
 <div>
   <%= link_to "Edit this section", edit_section_path(@section) %> |
   <%= link_to "Back to sections", sections_path %>
-
-  <%= button_to "Destroy this section", @section, method: :delete %>
 </div>
