@@ -1,6 +1,66 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @subject %>
+<p>
+  <strong>Name:</strong>
+  <%= @subject.name %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @subject.teacher.name %>
+</p>
+
+<h1>Sections</h1>
+
+<% if @subject.sections.any? %>
+
+  <% @subject.sections.each do |section| %>
+
+    <h2><%= section.name %></h2>
+
+    <p>
+      <strong>Room:</strong> <%= section.room %> |
+      <strong>Timeslot:</strong> <%= section.timeslot %> |
+      <strong>Teacher:</strong> <%= @subject.teacher.name %>
+    </p>
+
+    <% if section.students.any? %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Year Level</th>
+            <th>Program</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% section.students.each do |student| %>
+            <tr>
+              <td><%= student.name %></td>
+              <td><%= student.year_level %></td>
+              <td><%= student.program %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    <% else %>
+
+      <p>No students enrolled in this section.</p>
+
+    <% end %>
+
+  <% end %>
+
+<% else %>
+
+  <p>No sections available for this subject.</p>
+
+<% end %>
+
+<br>
 
 <div>
   <%= link_to "Edit this subject", edit_subject_path(@subject) %> |
