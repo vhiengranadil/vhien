@@ -6,7 +6,6 @@
 
 <div id="students">
   <% @students.each do |student| %>
-    <%= render student %>
     <p>
       <%= link_to "Show this student", student %>
     </p>
@@ -14,3 +13,5 @@
 </div>
 
 <%= link_to "New student", new_student_path %>
+
+<%# Added to only show "Show this student" on the Students page %>
